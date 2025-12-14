@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Simple Page</title>
+  <!-- Optional: link a stylesheet -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    /* tiny default styling */
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; margin: 2rem; line-height: 1.5; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome</h1>
+    <p>A very simple starting HTML page.</p>
+  </header>
+
+  <main>
+    <p id="msg">Hello — edit this file to start building your page.</p>
+    <button id="toggleBtn">Toggle message</button>
+    <p><a href="#" id="exampleLink">Example link</a></p>
+  </main>
+
+  <script>
+    // small example script
+    const btn = document.getElementById('toggleBtn');
+    const msg = document.getElementById('msg');
+    btn.addEventListener('click', () => {
+      msg.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
