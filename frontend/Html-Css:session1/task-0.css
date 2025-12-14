@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 30px;
+}
+header span{
+  font-weight: bold;
+  font-style: italic;
+}
+ul{
+    position: relative;
+}
+.movie1{
+    position: absolute;
+    left: 100px;
+    color: red;
+}
