@@ -18,6 +18,13 @@ function renderGameApp() {
         </div>
       </main>
       <footer>
+        <div class="socials">
+        <span>codepen</span>
+        <span>github</span>
+        <span>freecodecamp</span>
+        <span>linkedin</span>
+        </div>
+        <hr>
         <p>designed by Abbas RouHi</p>
       </footer>
   `;
@@ -80,11 +87,9 @@ function createBoard() {
     card.dataset.index = index;
 
     card.innerHTML = `
-      <div class="card-inner">
-        <div class="card-front">?</div>
+        <div class="card-front"></div>
         <div class="card-back">${value}</div>
-      </div>
-    `;
+   `;
 
     card.addEventListener("click", handleCardClick);
 
