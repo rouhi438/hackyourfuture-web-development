@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     padding: 5px 10px;
     position: relative;
@@ -333,7 +333,7 @@ button:active {
 @media (max-width:500px) {
     .game-container {
         gap: 8px;
-        height: 440px;
+        height: 500px;
     }
 
     .cards-box {
@@ -342,27 +342,22 @@ button:active {
         grid-template-rows: repeat(6, 1fr);
         gap: 6px;
         height: 750px;
-        margin-top: 10px;
-    }
-
-    .game-info {
-        margin-top: 10px;
     }
 
     .btns {
-        margin: 20px 0;
+        margin: 10px 0;
     }
 
     .btns button {
-        height: 35px;
+        height: 30px;
     }
 
     .socials a {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         font-size: 14px;
         margin-bottom: 0;
-        margin-top: 4px;
+
     }
 
     header,
@@ -372,7 +367,7 @@ button:active {
     }
 
     footer {
-        height: 65px;
+        height: 70px;
         margin-bottom: 0;
     }
 }
