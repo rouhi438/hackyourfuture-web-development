@@ -341,7 +341,20 @@ button:active {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(6, 1fr);
         gap: 6px;
-        height: 700px;
+        height: 750px;
+        margin-top: 10px;
+    }
+
+    .game-info {
+        margin-top: 10px;
+    }
+
+    .btns {
+        margin: 20px 0;
+    }
+
+    .btns button {
+        height: 35px;
     }
 
     .socials a {
@@ -359,7 +372,7 @@ button:active {
     }
 
     footer {
-        height: 60px;
+        height: 65px;
         margin-bottom: 0;
     }
 }

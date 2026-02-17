@@ -14,8 +14,8 @@ function renderGameApp() {
         </div>
         <div id="cards-box" class="cards-box"></div>
         <div class="btns">
-          <button type="button" class="reset-btn">Reset game</button>
-          <button type="button" class="hard-btn">hard Mode</button>
+          <button type="button" class="reset-btn">Reset Game</button>
+          <button type="button" class="hard-btn">Hard Mode</button>
         </div>
       </main>
        <p class="win-message"></p>
