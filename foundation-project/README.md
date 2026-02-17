@@ -4,6 +4,12 @@ A browser-based **Memory Matching Game** built using **Vanilla JavaScript, HTML,
 
 ---
 
+## 🌐 Live Demo
+
+👉 Play The Game [Here](https://rouhi438.github.io/hackyourfuture-web-development/foundation-project/)
+
+---
+
 ## 🎮 Game Description
 
 This Memory Game is designed to test player memory and concentration.

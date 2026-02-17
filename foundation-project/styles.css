@@ -19,7 +19,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
     padding: 5px 10px;
     position: relative;
@@ -341,7 +341,7 @@ button:active {
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(6, 1fr);
         gap: 6px;
-        height: 600px;
+        height: 700px;
     }
 
     .socials a {
@@ -354,12 +354,12 @@ button:active {
 
     header,
     .game-info {
-        height: 25px;
+        height: 35px;
         font-size: 12px;
     }
 
     footer {
-        height: 50px;
+        height: 60px;
         margin-bottom: 0;
     }
 }
