@@ -10,6 +10,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgb(50, 50, 50);
 }
 
 .game-app {
@@ -18,8 +19,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 10px;
     padding: 5px 10px;
+    position: relative;
 }
 
 body,
@@ -34,20 +37,24 @@ footer,
 }
 
 header {
-    width: calc(100% - 60px);
+    /*width: calc(100% - 60px);*/
+    width: 100%;
+    max-width: 850px;
     height: 35px;
-    background-color: lightgreen;
-    border-radius: 3px;
+    border-radius: 15px 15px 0 0;
+    color: rgb(50, 50, 50);
+    font-weight: 900;
+    background-color: #fe6f6f;
 }
 
 .game-container {
     width: 100%;
     max-width: 850px;
     height: 100%;
-    max-height: 500px;
+    max-height: 490px;
     aspect-ratio: 1 / 1;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 
 }
 
@@ -61,9 +68,11 @@ header {
 }
 
 .game-info {
-    padding: 5px;
-    background-color: lightblue;
-    border-radius: 0 15px 0 15px;
+    padding: 5px 15px;
+    background-color: #fe6f6f;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
 }
 
 .cards-box {
@@ -118,7 +127,7 @@ header {
 }
 
 .front {
-    background-color: greenyellow;
+    background-color: #d09696;
 }
 
 .back {
@@ -142,7 +151,11 @@ header {
     font-weight: bold;
     color: #03724b;
     position: absolute;
-    top: 200px;
+    top: 100px;
+}
+
+.win-message span {
+    font-size: 20px;
 }
 
 .animate {
@@ -161,36 +174,112 @@ header {
     width: 45%;
 }
 
+.emoji-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 64px;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+}
+
+.emoji-anime {
+    animation: emoji-pop 2s infinite alternate
+}
+
+@keyframes emoji-pop {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(3);
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(2);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+    }
+}
+
+@keyframes emoji-pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(2.5);
+    }
+}
+
 footer {
     width: calc(100% + 20px);
-    margin-left: -10px;
+    /*margin-left: -10px;
     margin-right: -10px;
-    margin-bottom: -10px;
-    height: 60px;
+    margin-bottom: -20px;*/
+    height: 72px;
     flex-direction: column;
-    background-color: gray;
+    background-color: rgb(29, 28, 28);
     padding: 0 30px;
 }
 
 footer .socials {
     width: 250px;
     height: 20px;
-    background-color: #5468ff;
     text-align: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
     font-size: 10px;
-    gap: 5px;
+    gap: 15px;
+}
+
+.socials a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 3px;
+    border-radius: 50%;
+    background: #fe4d4f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    box-shadow: 0 0 10px #fe6f6f;
+    transition: transform 0.3s ease;
+}
+
+.socials a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px 5px #fe6f6f;
 }
 
 footer hr {
+    border: none;
     width: 100%;
     height: 1px;
-    color: #fff;
+    background-color: #fe4d4f;
+
 }
 
 footer p {
     font-size: 10px;
-    margin-top: 3px;
+    margin-top: 5px;
+    color: #fff;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: #fe4d4f;
+    transition: 0.5s;
 }
 
 /*===========*/
@@ -242,7 +331,8 @@ button:active {
 
 @media (max-width:500px) {
     .game-container {
-        gap: 5px;
+        gap: 8px;
+        height: 440px;
     }
 
     .cards-box {
@@ -251,5 +341,98 @@ button:active {
         grid-template-rows: repeat(6, 1fr);
         gap: 6px;
         height: 600px;
+    }
+
+    .socials a {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-top: 4px;
+    }
+
+    header,
+    .game-info {
+        height: 25px;
+        font-size: 12px;
+    }
+
+    footer {
+        height: 50px;
+        margin-bottom: 0;
+    }
+}
+
+/*===========*/
+header span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-100vw);
+    animation: titleAnimate 8s ease-in-out 3s infinite;
+}
+
+header span:nth-child(11) {
+    animation-delay: 0.1s;
+}
+
+header span:nth-child(10) {
+    animation-delay: 0.2s;
+}
+
+header span:nth-child(9) {
+    animation-delay: 0.3s;
+}
+
+header span:nth-child(8) {
+    animation-delay: 0.4s;
+}
+
+header span:nth-child(7) {
+    animation-delay: 0.11s;
+}
+
+header span:nth-child(6) {
+    animation-delay: 0.14s;
+}
+
+header span:nth-child(5) {
+    animation-delay: 0.17s;
+}
+
+header span:nth-child(4) {
+    animation-delay: 0.20s;
+}
+
+header span:nth-child(3) {
+    animation-delay: 0.23s;
+}
+
+header span:nth-child(2) {
+    animation-delay: 0.26s;
+}
+
+header span:nth-child(1) {
+    animation-delay: 0.29s;
+}
+
+@keyframes titleAnimate {
+    0% {
+        opacity: 0;
+        transform: translateX(-100vw);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100vw);
+        opacity: 0;
     }
 }

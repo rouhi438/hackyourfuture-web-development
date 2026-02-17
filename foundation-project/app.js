@@ -2,8 +2,9 @@
 const gameApp = document.getElementById("game-app");
 function renderGameApp() {
   gameApp.innerHTML = `
-  <header>
-        <p>Memory Game</p>
+      <header>
+        <span>M</span><span>E</span><span>M</span><span>O</span><span>R</span><span>Y</span> 
+      <span>&nbsp;</span><span>G</span><span>A</span><span>M</span><span>E</span>
       </header>
       <main class="game-container">
         <div class="game-info">
@@ -13,7 +14,7 @@ function renderGameApp() {
         </div>
         <div id="cards-box" class="cards-box"></div>
         <div class="btns">
-          <button type="button" class="reset-btn">Rest game</button>
+          <button type="button" class="reset-btn">Reset game</button>
           <button type="button" class="hard-btn">hard Mode</button>
         </div>
       </main>
@@ -21,13 +22,21 @@ function renderGameApp() {
        <div class="emoji-icon"></div>
       <footer>
         <div class="socials">
-        <span>codepen</span>
-        <span>github</span>
-        <span>freecodecamp</span>
-        <span>linkedin</span>
+         <a href="https://github.com/rouhi438" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="https://linkedin.com/in/rouhi438" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://codepen.io/rouhi438" target="_blank"
+          ><i class="fa-brands fa-codepen"></i
+        ></a>
+        <a href="https://freecodecamp.org/rouhi438" target="_blank"
+          ><i class="fa-brands fa-free-code-camp"></i
+        ></a>
         </div>
         <hr>
-        <p>designed by Abbas RouHi</p>
+        <p>© 2025 <a href"" target="_blank">Abbas R.hansen</a>. All rights reserved.</p>
       </footer>
   `;
 }
@@ -61,7 +70,10 @@ const flipSound = new Audio("./sound_flip_card.ogg");
 const correctSound = new Audio("./sounds/sound_win.wav");
 const wrongSound = new Audio("./sounds/sound_wrong.wav");
 const shuffleSound = new Audio("./sounds/sound_shuffle.wav");
+const winnerSound = new Audio("./sounds/Winner.mp3");
+const gameOverSound = new Audio("./sounds/game-over.mp3");
 
+//------------Variables -----------------
 let cards = [];
 let matchedPairs = 0;
 let time = 0;
@@ -73,31 +85,71 @@ let secondCard = null;
 let lockBoard = false;
 let gameStarted = false;
 let hardLevel = false;
-let hardTime = 50;
+let hardTime = 40;
+let emojiVisible = false;
 
+//----------Reset Btn --------------------
 resetBtn.addEventListener("click", () => {
+  hardLevel = false;
+  clearInterval(timerInterval);
+  timer = 0;
   startGame();
   cards = shuffle([...cardsJson, ...cardsJson]);
   createGameBoard();
 });
 
+//----------Start Game ------------------
 function startGame() {
   cardsBox.innerHTML = "";
   clearInterval(timerInterval);
   gameStarted = false;
+  hardLevel = false;
   time = 0;
   matchedPairs = 0;
   moves = 0;
   firstCard = null;
   secondCard = null;
   lockBoard = false;
-  msg.textContent = "";
 
+  msg.textContent = "";
+  emojiIcon.innerHTML = "";
   timeElement.textContent = 0;
+  timeElement.style.color = "";
   matchedElement.textContent = 0;
   movesElement.textContent = 0;
 }
-// duplicate
+//-----------Hard Btn --------------------
+hardBtn.addEventListener("click", () => {
+  startGame();
+  startHardLevel();
+  cards = shuffle([...cardsJson, ...cardsJson]);
+  createGameBoard();
+});
+//-----------Hard Level -------------------
+function startHardLevel() {
+  clearInterval(timerInterval);
+
+  hardLevel = true;
+  gameStarted = true;
+  timer = hardTime;
+
+  timeElement.textContent = timer;
+
+  timerInterval = setInterval(() => {
+    timer--;
+    timeElement.textContent = timer;
+
+    if (timer <= 15) {
+      timeElement.style.color = "red";
+    }
+
+    if (timer <= 0) {
+      clearInterval(timerInterval);
+      gameOver();
+    }
+  }, 1000);
+}
+// ----------------duplicate cards ---------
 cards = shuffle([...cardsJson, ...cardsJson]);
 
 // ---------------- SHUFFLE ----------------
@@ -114,6 +166,8 @@ function shuffle(array) {
 
 // ---------------- TIMER ----------------
 function startTimer() {
+  clearInterval(timerInterval);
+
   timerInterval = setInterval(() => {
     timer++;
     timeElement.textContent = timer;
@@ -193,9 +247,9 @@ function checkMatch() {
 function disableCards() {
   firstCard.classList.add("matched");
   secondCard.classList.add("matched");
-
   matchedPairs++;
   matchedElement.textContent = matchedPairs;
+  matchedElement.style.color = "blue";
 
   resetBoard();
 
@@ -203,7 +257,11 @@ function disableCards() {
     clearInterval(timerInterval);
     timer = null;
     setTimeout(() => {
-      msg.textContent = "You WON The Game! 🏆";
+      playSound(winnerSound);
+      msg.innerHTML =
+        "You WON The Game! 🏆<br> <span>Will Do Try Again?</span>";
+      emojiIcon.innerHTML = "😎";
+      emojiIcon.classList.add("emoji-anime");
     }, 500);
   }
 }
@@ -230,4 +288,30 @@ function playSound(sound, delay = 0) {
     sound.currentTime = 0;
     sound.play();
   }, delay);
+}
+
+//------------Game Over ------------------
+function gameOver() {
+  lockAllCards();
+  playSound(gameOverSound);
+  msg.innerHTML = "Game Over!!! <br> <span>Will Do Try Again?</span>";
+  emojiIcon.innerHTML = "☹️";
+  emojiIcon.classList.add("emoji-anime");
+}
+
+//----------Lock All Cards-----------------
+function lockAllCards() {
+  lockBoard = true;
+  const allCards = document.querySelectorAll(".card");
+  allCards.forEach((card) => {
+    card.style.pointerEvents = "none";
+  });
+}
+
+//---------- Emoji ------------------------
+function showEmoji(emoji) {
+  emojiIcon.textContent = emoji;
+  emojiIcon.style.opacity = 1;
+  emojiIcon.classList.add("emoji-anime");
+  emojiVisible = true;
 }
