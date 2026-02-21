@@ -1,3 +1,4 @@
+/* ================= RESET ================= */
 * {
     padding: 0;
     margin: 0;
@@ -5,14 +6,15 @@
     font-family: sans-serif;
 }
 
+/* ================= BODY ================= */
 body {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(50, 50, 50);
 }
 
+/* ================= APP LAYOUT ================= */
 .game-app {
     width: 100%;
     height: 100%;
@@ -20,16 +22,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
     padding: 5px 10px;
     position: relative;
     overflow: hidden;
 }
 
-body,
+/* ================= FLEX CENTER ================= */
 header,
 .game-container,
 .card,
+button,
 footer,
 .socials {
     display: flex;
@@ -37,342 +40,18 @@ footer,
     justify-content: center;
 }
 
+/* ================= HEADER ================= */
 header {
-    /*width: calc(100% - 60px);*/
     width: 100%;
     max-width: 850px;
     height: 35px;
     border-radius: 15px 15px 0 0;
-    color: rgb(50, 50, 50);
+    color: black;
     font-weight: 900;
-    background-color: #fe6f6f;
-}
-
-.game-container {
-    width: 100%;
-    max-width: 850px;
-    height: 100%;
-    max-height: 490px;
-    aspect-ratio: 1 / 1;
-    flex-direction: column;
-    gap: 12px;
-
-}
-
-.game-info,
-.btns {
-    width: 100%;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.game-info {
-    padding: 5px 15px;
-    background-color: #fe6f6f;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 0 0 15px 15px;
-}
-
-.cards-box {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 8px;
-}
-
-
-
-.card {
-    width: 100%;
-    height: 100%;
-    perspective: 1000px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    border-radius: 5px;
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-}
-
-.card:hover {
-    transform: scale(1.08);
-}
-
-.card.flipped {
-    transform: rotateY(180deg);
-}
-
-.card.matched {
-    visibility: hidden;
-}
-
-.face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.5s;
-}
-
-.front {
-    background-color: #d09696;
-}
-
-.back {
-    background: #5eaceb;
-    transform: rotateY(180deg);
-}
-
-.back img {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-}
-
-.win-message {
-    width: 400px;
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-    color: #03724b;
-    position: absolute;
-    top: 100px;
-}
-
-.win-message span {
-    font-size: 20px;
-}
-
-.animate {
-    transform: scaleX(-1);
-    background-color: lightblue;
-    transition: 0.5s;
-}
-
-.btns {
-    padding: 0 10px;
-}
-
-.reset-btn,
-.hard-btn {
-    height: 100%;
-    width: 45%;
-}
-
-.emoji-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    font-size: 64px;
-    pointer-events: none;
-    opacity: 1;
-    z-index: 10;
-}
-
-.emoji-anime {
-    animation: emoji-pop 2s infinite alternate
-}
-
-@keyframes emoji-pop {
-    0% {
-        transform: translate(-50%, -50%) scale(0);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(3);
-    }
-
-    70% {
-        transform: translate(-50%, -50%) scale(2);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) scale(3);
-    }
-}
-
-@keyframes emoji-pulse {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(3);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(2.5);
-    }
-}
-
-footer {
-    width: calc(100% + 20px);
-    margin-left: -10px;
-    margin-right: -10px;
-    margin-bottom: -20px;
-    height: 72px;
-    flex-direction: column;
-    background-color: rgb(29, 28, 28);
-    padding: 0 30px;
-}
-
-footer .socials {
-    width: 250px;
-    height: 20px;
-    text-align: center;
-    margin-bottom: 5px;
-    font-size: 10px;
-    gap: 15px;
-}
-
-.socials a {
-    font-size: 1.3rem;
-    text-decoration: none;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 3px;
-    border-radius: 50%;
-    background: #fe4d4f;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    box-shadow: 0 0 10px #fe6f6f;
-    transition: transform 0.3s ease;
-}
-
-.socials a:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px 5px #fe6f6f;
-}
-
-footer hr {
-    border: none;
-    width: 100%;
-    height: 1px;
-    background-color: #fe4d4f;
-
-}
-
-footer p {
-    font-size: 10px;
-    margin-top: 5px;
-    color: #fff;
-}
-
-footer p a:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    color: #fe4d4f;
-    transition: 0.5s;
-}
-
-/*===========*/
-
-button {
-    align-items: center;
-    appearance: none;
-    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
-    border: 0;
-    border-radius: 6px;
-    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: "JetBrains Mono", monospace;
-    height: 48px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
+    border: 0.5px solid #f7a6a6;
     overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow .15s, transform .15s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
-    font-size: 18px;
 }
 
-button:focus {
-    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-}
-
-button:hover {
-    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-    transform: translateY(-2px);
-}
-
-button:active {
-    box-shadow: #3c4fe0 0 3px 7px inset;
-    transform: translateY(2px);
-}
-
-@media (max-width:500px) {
-    .game-container {
-        gap: 8px;
-        height: 500px;
-    }
-
-    .cards-box {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(6, 1fr);
-        gap: 6px;
-        height: 750px;
-    }
-
-    .btns {
-        margin: 10px 0;
-    }
-
-    .btns button {
-        height: 30px;
-    }
-
-    .socials a {
-        width: 25px;
-        height: 25px;
-        font-size: 14px;
-        margin-bottom: 0;
-
-    }
-
-    header,
-    .game-info {
-        height: 35px;
-        font-size: 12px;
-    }
-
-    footer {
-        height: 70px;
-        margin-bottom: 0;
-    }
-}
-
-/*===========*/
 header span {
     display: inline-block;
     opacity: 0;
@@ -443,5 +122,395 @@ header span:nth-child(1) {
     100% {
         transform: translateX(100vw);
         opacity: 0;
+    }
+}
+
+/* ================= MODE ICON ================= */
+.mode {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+.mode .mode-icon {
+    font-size: 12px;
+    width: 25px;
+    border-radius: 50%;
+    background-color: rgb(206, 206, 206);
+    text-align: center;
+}
+
+/* ================= GAME CONTAINER ================= */
+.game-container {
+    width: 100%;
+    max-width: 850px;
+    height: 100%;
+    max-height: 490px;
+    aspect-ratio: 1 / 1;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.game-info,
+.btns {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-info {
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+
+}
+
+.game-info {
+    padding: 5px 15px;
+    border: 0.5px solid #f7a6a6;
+    color: black;
+    font-weight: bold;
+    border-radius: 0 0 15px 15px;
+}
+
+/* ================= CARDS ================= */
+.cards-box {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    border: 0.5px solid #f7a6a6;
+    box-shadow: 0 0 5px #b1a8a8;
+}
+
+.card:hover {
+    transform: scale(1.08);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    visibility: hidden;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s;
+    border-radius: 5px;
+}
+
+.back {
+    background: #5eaceb;
+    transform: rotateY(180deg);
+}
+
+.back img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+/* ================= WIN MESSAGE ================= */
+.win-message {
+    width: 400px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    position: absolute;
+    top: 140px;
+}
+
+.win-message span {
+    font-size: 20px;
+}
+
+.animate {
+    transform: scaleX(-1);
+    background-color: lightblue;
+    transition: 0.5s;
+}
+
+.emoji-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 64px;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+}
+
+.emoji-anime {
+    animation: emoji-pop 2s infinite alternate
+}
+
+@keyframes emoji-pop {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(3);
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(2);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(3);
+    }
+}
+
+/* ================= BUTTONS ================= */
+.btns {
+    padding: 0 15px;
+}
+
+button {
+    outline: none;
+    border: 0.5px solid #f7a6a6;
+    border-radius: 5px;
+    width: 40%;
+    height: 100%;
+    font-weight: bold;
+    color: black;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+}
+
+button:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+button:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+button:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(2px);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -20px;
+    height: 72px;
+    flex-direction: column;
+    padding: 0 30px;
+    border-top: 0.5px solid #f7a6a6;
+}
+
+footer .socials {
+    width: 250px;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 10px;
+    gap: 15px;
+}
+
+.socials a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    width: 28px;
+    height: 28px;
+    color: #fe4d4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    box-shadow: 0 0 10px #fe6f6f;
+    border: 0.5px solid #f7a6a6;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+}
+
+.socials a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px 5px #fe6f6f;
+}
+
+footer hr {
+    border: none;
+    width: 100%;
+    height: 1px;
+    background-color: #fe4d4f;
+}
+
+footer p {
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+footer p a {
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+    color: #fe4d4f;
+    text-underline-offset: 3px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* ================= HIDDEN ================= */
+.hidden {
+    display: none !important;
+}
+
+/* ================= LIGHT MODE ================= */
+body.light {
+    background-color: #ffffff;
+}
+
+body.light header {
+    color: black;
+    border: 0.5px solid #f7a6a6;
+}
+
+body.light .game-info {
+    color: black;
+    border: 0.5px solid #f7a6a6;
+}
+
+body.light .card {
+    border: 0.5px solid #f7a6a6;
+    box-shadow: 0 0 5px #b1a8a8;
+}
+
+body.light .back {
+    background: #5eaceb;
+}
+
+body.light .win-message {
+    color: black;
+}
+
+body.light button {
+    color: black;
+}
+
+body.light footer {
+    border-top: 0.5px solid #f7a6a6;
+}
+
+body.light .socials a {
+    color: #fe4d4f;
+    box-shadow: 0 0 10px #fe6f6f;
+    border: 0.5px solid #f7a6a6;
+}
+
+body.light .socials a:hover {
+    box-shadow: 0 0 15px 5px #fe6f6f;
+}
+
+body.light footer hr {
+    background-color: #fe4d4f;
+}
+
+body.light footer p a:hover {
+    color: #fe4d4f;
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+    background-color: #121212;
+}
+
+body.dark header {
+    color: white;
+}
+
+body.dark .game-info {
+    color: #ffffff;
+}
+
+body.dark button {
+    color: #ffffff;
+}
+
+body.dark .win-message {
+    color: #ffffff;
+}
+
+body.dark footer p {
+    color: #ffffff;
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width:500px) {
+    .game-container {
+        gap: 8px;
+        height: 500px;
+    }
+
+    .cards-box {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 6px;
+        height: 750px;
+    }
+
+    .btns {
+        margin: 10px 0;
+    }
+
+    .btns button {
+        height: 30px;
+    }
+
+    .socials a {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+    header,
+    .game-info {
+        height: 35px;
+        font-size: 12px;
+    }
+
+    footer {
+        height: 70px;
+        margin-bottom: 0;
     }
 }

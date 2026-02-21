@@ -6,6 +6,12 @@ function renderGameApp() {
         <span>M</span><span>E</span><span>M</span><span>O</span><span>R</span><span>Y</span> 
       <span>&nbsp;</span><span>G</span><span>A</span><span>M</span><span>E</span>
       </header>
+       <div class="mode">
+        <span class="mode-icon ">
+          <i class="fa-regular fa-moon"></i>
+          <i class="fa-regular fa-sun hidden"></i>
+        </span>
+      </div>
       <main class="game-container">
         <div class="game-info">
           <div>Timer : <span id="timer">0</span>s</div>
@@ -14,8 +20,8 @@ function renderGameApp() {
         </div>
         <div id="cards-box" class="cards-box"></div>
         <div class="btns">
-          <button type="button" class="reset-btn">Reset Game</button>
-          <button type="button" class="hard-btn">Hard Mode</button>
+          <button type="button" class="reset-btn mode-btn">Reset Game</button>
+          <button type="button" class="hard-btn mode-btn">Hard Mode</button>
         </div>
       </main>
        <p class="win-message"></p>
@@ -36,7 +42,7 @@ function renderGameApp() {
         ></a>
         </div>
         <hr>
-        <p>© 2025 <a href"" target="_blank">Abbas R.hansen</a>. All rights reserved.</p>
+        <p>© 2026 <a href="https://rouhi438.github.io/RainBow/my-cv-template/" target="_blank">Abbas R.hansen</a>. All rights reserved.</p>
       </footer>
   `;
 }
@@ -85,7 +91,7 @@ let secondCard = null;
 let lockBoard = false;
 let gameStarted = false;
 let hardLevel = false;
-let hardTime = 40;
+let hardTime = 45;
 let emojiVisible = false;
 
 //----------Reset Btn --------------------
@@ -315,3 +321,13 @@ function showEmoji(emoji) {
   emojiIcon.classList.add("emoji-anime");
   emojiVisible = true;
 }
+
+//----------Dark and Light mode -----------
+
+const moonIcon = document.querySelector(".fa-moon");
+const sunIcon = document.querySelector(".fa-sun");
+document.querySelector(".mode").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  moonIcon.classList.toggle("hidden");
+  sunIcon.classList.toggle("hidden");
+});
