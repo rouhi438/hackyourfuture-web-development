@@ -7,10 +7,12 @@ function renderGameApp() {
       <span>&nbsp;</span><span>G</span><span>A</span><span>M</span><span>E</span>
       </header>
        <div class="mode">
-        <span class="mode-icon ">
-          <i class="fa-regular fa-moon"></i>
-          <i class="fa-regular fa-sun hidden"></i>
-        </span>
+       <div class="empty"></div>
+        <div class="mode-icon ">
+         <span class="icons"></span>
+          <span class="mode-text">Light Mode</span>
+      
+        </div>
       </div>
       <main class="game-container">
         <div class="game-info">
@@ -322,12 +324,25 @@ function showEmoji(emoji) {
   emojiVisible = true;
 }
 
-//----------Dark and Light mode -----------
+// //----------Dark and Light mode -----------
 
-const moonIcon = document.querySelector(".fa-moon");
-const sunIcon = document.querySelector(".fa-sun");
-document.querySelector(".mode").addEventListener("click", () => {
+const modeBtn = document.querySelector(".mode-icon");
+const modeText = document.querySelector(".mode-text");
+const icons = document.querySelector(".icons");
+
+icons.innerHTML = `<i class="bi bi-moon-stars-fill"></i>`;
+modeText.textContent = "Night Mode";
+
+modeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
-  moonIcon.classList.toggle("hidden");
-  sunIcon.classList.toggle("hidden");
+  document.body.classList.toggle("night-mode");
+  document.body.classList.toggle("light-mode");
+
+  if (document.body.classList.contains("dark")) {
+    icons.innerHTML = `<i class="bi bi-sun-fill"></i>`;
+    modeText.textContent = "Light Mode";
+  } else {
+    icons.innerHTML = `<i class="bi bi-moon-stars-fill"></i>`;
+    modeText.textContent = "Night Mode";
+  }
 });
