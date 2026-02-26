@@ -225,8 +225,6 @@ function handleCardClick(e) {
 
   if (!firstCard) {
     firstCard = clickedCard;
-    //playSound(shuffleSound, 0);
-    //playSound(flipSound, 100);
     return;
   }
 
@@ -246,8 +244,14 @@ function checkMatch() {
     disableCards();
     playSound(correctSound, 100);
   } else {
+    firstCard.classList.add("shake");
+    secondCard.classList.add("shake");
     unMatchCard();
-    playSound(wrongSound, 400);
+    playSound(wrongSound);
+    setTimeout(() => {
+      firstCard.classList.remove("shake");
+      secondCard.classList.remove("shake");
+    }, 400);
   }
 }
 
