@@ -6,14 +6,16 @@ function renderGameApp() {
         <span>M</span><span>E</span><span>M</span><span>O</span><span>R</span><span>Y</span> 
       <span>&nbsp;</span><span>G</span><span>A</span><span>M</span><span>E</span>
       </header>
-       <div class="mode">
-       <div class="empty"></div>
-        <div class="mode-icon ">
-         <span class="icons"></span>
-          <span class="mode-text">Light Mode</span>
-      
+       <div class="icon-bar">
+        <div class="volume">
+          <i class="bi bi-volume-up vol-icon"></i>
+          <i class="bi bi-volume-mute vol-icon hidden"></i>
         </div>
-      </div>
+        <div class="mode-icon ">
+          <span class="icons"></span>
+          <span class="mode-text">Light Mode</span>
+        </div>
+       </div>
       <main class="game-container">
         <div class="game-info">
           <div>Timer : <span id="timer">0</span>s</div>
@@ -239,20 +241,22 @@ function handleCardClick(e) {
 
 // ---------------- MATCH CHECK ----------------
 function checkMatch() {
-  const isMatch = firstCard.dataset.value === secondCard.dataset.value;
-  if (isMatch) {
-    disableCards();
-    playSound(correctSound, 100);
-  } else {
-    firstCard.classList.add("shake");
-    secondCard.classList.add("shake");
-    unMatchCard();
-    playSound(wrongSound);
-    setTimeout(() => {
-      firstCard.classList.remove("shake");
-      secondCard.classList.remove("shake");
-    }, 400);
-  }
+  setTimeout(() => {
+    const isMatch = firstCard.dataset.value === secondCard.dataset.value;
+    if (isMatch) {
+      disableCards();
+      playSound(correctSound, 100);
+    } else {
+      firstCard.classList.add("shake");
+      secondCard.classList.add("shake");
+      playSound(wrongSound);
+      unMatchCard();
+      setTimeout(() => {
+        firstCard.classList.remove("shake");
+        secondCard.classList.remove("shake");
+      }, 200);
+    }
+  }, 150);
 }
 
 // ---------------- MATCH SUCCESS ----------------
@@ -349,4 +353,27 @@ modeBtn.addEventListener("click", () => {
     icons.innerHTML = `<i class="bi bi-moon-stars-fill"></i>`;
     modeText.textContent = "Night Mode";
   }
+});
+
+//----------Sound Control ----------------
+const volumeBtn = document.querySelector(".volume");
+const onAudioIcon = document.querySelector(".bi-volume-up");
+const offAudioIcon = document.querySelector(".bi-volume-mute");
+let isMute = false;
+const allSounds = [
+  flipSound,
+  correctSound,
+  wrongSound,
+  shuffleSound,
+  winnerSound,
+  gameOverSound,
+];
+
+volumeBtn.addEventListener("click", () => {
+  onAudioIcon.classList.toggle("hidden");
+  offAudioIcon.classList.toggle("hidden");
+  isMute = !isMute;
+  allSounds.forEach((sound) => {
+    sound.muted = isMute;
+  });
 });
