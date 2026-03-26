@@ -48,6 +48,8 @@ function renderGameApp() {
         <hr>
         <p>© 2026 <a href="https://rouhi438.github.io/RainBow/my-cv-template/" target="_blank">Abbas R.hansen</a>. All rights reserved.</p>
       </footer>
+      <canvas id="my-canvas"></canvas>
+
   `;
 }
 renderGameApp();
@@ -278,7 +280,12 @@ function disableCards() {
         "You WON The Game! 🏆<br> <span>Will Do Try Again?</span>";
       emojiIcon.innerHTML = "😎";
       emojiIcon.classList.add("emoji-anime");
+      confetti({ particleCount: 150, spread: 100 });
     }, 500);
+
+    setTimeout(() => {
+      confetti({ particleCount: 150, spread: 100 });
+    }, 4000);
   }
 }
 

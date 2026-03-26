@@ -157,14 +157,17 @@ header span:nth-child(1) {
         inset 0 -2px 3px rgba(255, 255, 255, 0.7);
 
 }
-body.light .vol-icon{
+
+body.light .vol-icon {
     background-color: #fff;
     color: black;
 }
-body.dark .vol-icon{
+
+body.dark .vol-icon {
     background-color: black;
     color: #fff;
 }
+
 .mode-icon {
     display: flex;
     align-items: center;
@@ -671,4 +674,10 @@ body.dark footer p {
         height: 70px;
         margin-bottom: 0;
     }
+}
+
+#my-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
