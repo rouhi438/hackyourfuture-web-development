@@ -1,0 +1,9 @@
+button {
+    color: blue;
+}
+
+.btn-danger {
+    padding: 10px;
+    background-color: red;
+
+}
